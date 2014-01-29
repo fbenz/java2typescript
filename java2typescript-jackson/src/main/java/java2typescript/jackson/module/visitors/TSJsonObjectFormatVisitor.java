@@ -94,7 +94,9 @@ public class TSJsonObjectFormatVisitor extends ABaseTSJsonFormatVisitor<ClassTyp
 			if (method.getAnnotation(Transient.class) != null)
 				continue;
 
-			addMethod(method);
+			if (!method.getReturnType().equals(this.clazz)) {
+				addMethod(method);
+			}
 		}
 	}
 
